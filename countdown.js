@@ -1,54 +1,50 @@
-// window.onload = function () {
-//   const myModal = document.getElementById("countdownModal")
-//   myModal.classList.add("show")
-//   myModal.style.display = "block"
-//   console.log(myModal)
-// }
-
 const myDays = document.getElementById("days")
 const myHours = document.getElementById("hours")
 const myMinutes = document.getElementById("minutes")
 const mySeconds = document.getElementById("seconds")
 
-var startBtn = document.getElementById("start-countdown")
-console.log(startBtn)
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
+// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
+const countToDate = new Date("October 6, 2022 14:00:00")
 
-function updateTimer() {
-  myDate = new Date("November 20, 2022 13:00:00")
+let previousTimeBetweenDates
+setInterval(() => {
+  const currentDate = new Date()
+  const timeBetweenDates = Math.ceil((countToDate - currentDate) / 1000)
+  flipAllCards(timeBetweenDates)
+  previousTimeBetweenDates = timeBetweenDates
+}, 1000)
 
-  now = new Date()
-
-  diff = myDate - now
-
-  days = Math.floor(diff / (1000 * 60 * 60 * 24))
-  hours = Math.floor(diff / (1000 * 60 * 60))
-  mins = Math.floor(diff / (1000 * 60))
-  secs = Math.floor(diff / 1000)
+function flipAllCards(time) {
+  const secs = time % 60
+  const mins = Math.floor(time / 60) % 60
+  const hours = Math.floor(time / 3600) % 24
+  const days = Math.floor(time / 3600 / 24)
 
   setDays = days
-  setHours = hours - days * 24
-  setMinutes = mins - hours * 60
-  setSeconds = secs - mins * 60
+  setHours = hours
+  setMinutes = mins
+  setSeconds = secs
 
   myDays.innerHTML = setDays
   myHours.innerHTML = setHours
   myMinutes.innerHTML = setMinutes
   mySeconds.innerHTML = setSeconds
+
+  flip(document.querySelector("[data-days]"), setDays)
+  flip(document.querySelector("[data-hours]"), setHours)
+  flip(document.querySelector("[data-minutes]"), setMinutes)
+  flip(document.querySelector("[data-seconds]"), setSeconds)
 }
-setInterval("updateTimer()", 1000)
 
-startBtn.addEventListener("click", function (e) {
-  e.preventDefault()
-  const myModal = document.getElementById("countdownModal")
-  myModal.classList.remove("show")
+function flip(flipCard, newNumber) {
+  const thatNumber = flipCard.querySelector(".number")
 
-  const formDays = document.getElementById("exampleInputDays").value
-  const formHours = document.getElementById("exampleInputHours").value
-  const formMinutes = document.getElementById("exampleInputMinutes").value
-  const formSeconds = document.getElementById("exampleInputSeconds").value
+  const startNumber = parseInt(thatNumber.textContent)
 
-  myDays.innerHTML = formDays
-  myHours.innerHTML = formHours
-  myMinutes.innerHTML = formMinutes
-  mySeconds.innerHTML = formSeconds
-})
+  if (newNumber !== startNumber) {
+    thatNumber.classList.add("animated")
+  } else {
+    thatNumber.classList.remove("animated")
+  }
+}
