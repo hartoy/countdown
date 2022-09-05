@@ -1,14 +1,105 @@
 html,
 body {
-  height: 100%;
+  height: 130%;
+}
+html .no-overflow,
+body .no-overflow {
   overflow-y: hidden;
 }
 
 body {
-  background-color: #1C1B27;
+  background-color: #1c1b27;
   z-index: -100;
   background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg) bottom right -30%, -webkit-gradient(linear, left top, left bottom, from(#191a24), to(#261e2f));
   background: url(/images/pattern-hills.svg) no-repeat bottom right 20%, url(/images/bg-stars.svg) bottom right -30%, linear-gradient(to bottom, #191a24, #261e2f);
+}
+
+.burger {
+  margin-top: 15px;
+  margin-left: 15px;
+  position: sticky;
+  top: 15px;
+  z-index: 1;
+  padding-bottom: 5px;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+  opacity: 0;
+}
+
+.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+.mobile-menu {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  color: black;
+  font-family: "Red Hat Text", sans-serif;
+  height: 100vh;
+  z-index: 1;
+}
+.mobile-menu a {
+  text-decoration: none;
+  color: red;
+}
+
+.dropdown_menu-6 {
+  -webkit-animation: growDown 500ms ease-in-out forwards;
+          animation: growDown 500ms ease-in-out forwards;
+  -webkit-transform-origin: top center;
+          transform-origin: top center;
+}
+
+@-webkit-keyframes growDown {
+  0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  80% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@keyframes growDown {
+  0% {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  80% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+.hide {
+  display: none !important;
 }
 
 h1:hover {
@@ -44,12 +135,19 @@ ul {
   text-transform: uppercase;
 }
 
+#drawer,
+header,
+input {
+  display: none;
+}
+
 .card {
   border-style: none;
   background-color: transparent !important;
   -webkit-box-shadow: 0px 8px black;
           box-shadow: 0px 8px black;
   margin-bottom: 20px;
+  z-index: -1;
 }
 
 .card-top {
@@ -99,7 +197,7 @@ ul {
   color: #fb6087;
 }
 .bottom-text a:hover {
-  color: #EB3867;
+  color: #eb3867;
 }
 
 .social-img:hover {
@@ -113,6 +211,7 @@ ul {
   right: 0;
   left: 0;
   padding-bottom: 15px;
+  z-index: -1;
 }
 
 .modal-content {
@@ -141,7 +240,7 @@ ul {
 .form-control {
   width: 60px;
   height: 45px;
-  background-color: #2F2439;
+  background-color: #2f2439;
   border-style: none;
   text-align: center;
 }
@@ -159,7 +258,7 @@ input[type=number] {
 
 .start-button {
   color: #fb6087;
-  background-color: #2F2439;
+  background-color: #2f2439;
   border: 1px solid #fb6087;
   height: 60px;
   width: 120px;
@@ -170,35 +269,161 @@ input[type=number] {
   color: black;
 }
 
-
-@keyframes opanimation {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-.animated {
-  animation: opanimation 1s infinite;
-}
-
-
-
-
 @media only screen and (min-width: 390px) {
   .modal {
     margin-top: 90px;
   }
 }
 @media only screen and (min-width: 768px) {
+  * {
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    /* adds animation for all transitions */
+    -webkit-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+    margin: 0;
+    padding: 0;
+    -webkit-text-size-adjust: none;
+  }
+
+  html,
+body {
+    height: 100%;
+    overflow: hidden;
+  }
+
   body {
-    background-color: #1C1B27;
+    background-color: #1c1b27;
     z-index: -100;
     background: url(../images/bg-stars.svg) top/100% 70% no-repeat, url(../images/pattern-hills.svg) bottom/100% 25% no-repeat, -webkit-gradient(linear, left top, left bottom, from(#1e1e28), to(#251d2c));
     background: url(../images/bg-stars.svg) top/100% 70% no-repeat, url(../images/pattern-hills.svg) bottom/100% 25% no-repeat, linear-gradient(to bottom, #1e1e28, #251d2c);
+  }
+
+  .burger {
+    display: none;
+  }
+
+  #drawer,
+header,
+input {
+    display: block;
+  }
+
+  #drawer-toggle {
+    position: absolute;
+    opacity: 0;
+  }
+
+  #drawer-toggle-label {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    left: 0px;
+    height: 50px;
+    width: 50px;
+    display: block;
+    position: fixed;
+    background: rgba(255, 255, 255, 0);
+    z-index: 1;
+  }
+
+  /* adds our "hamburger" menu icon */
+  #drawer-toggle-label:before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 24px;
+    background: black;
+    left: 13px;
+    top: 18px;
+    -webkit-box-shadow: 0 6px 0 black, 0 12px 0 black;
+            box-shadow: 0 6px 0 black, 0 12px 0 black;
+  }
+
+  header {
+    width: 100%;
+    position: fixed;
+    left: 0px;
+    background: #fb6087;
+    padding: 10px 10px 10px 50px;
+    font-size: 30px;
+    line-height: 30px;
+    z-index: 0;
+    color: black;
+    font-style: "Red Hat Text", sans-serif;
+  }
+
+  /* drawer menu pane - note the 0px width */
+  #drawer {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100%;
+    width: 300px;
+    background: black;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 20px;
+    -webkit-overflow-scrolling: touch;
+    color: #fb6087;
+    font-style: "Red Hat Text", sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  #drawer a {
+    color: white;
+  }
+
+  #page-content {
+    margin-top: 50px;
+    width: 100%;
+    height: calc(100% - 50px);
+    -webkit-overflow-scrolling: touch;
+    padding: 20px;
+  }
+
+  /* checked styles (menu open state) */
+  #drawer-toggle:checked ~ #drawer-toggle-label {
+    height: 100%;
+    width: calc(100% - 300px);
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  #drawer-toggle:checked ~ #drawer-toggle-label,
+#drawer-toggle:checked ~ header {
+    left: 300px;
+  }
+
+  #drawer-toggle:checked ~ #drawer {
+    left: 0px;
+  }
+
+  #drawer-toggle:checked ~ #page-content {
+    margin-left: 300px;
+  }
+
+  .add-margin-left {
+    margin-left: 330px;
+  }
+
+  /* Menu item styles */
+  #drawer ul {
+    list-style-type: none;
+  }
+
+  #drawer ul a {
+    display: block;
+    padding: 10px;
+    color: #c7c7c7;
+    text-decoration: none;
+  }
+
+  #drawer ul a:hover {
+    color: white;
   }
 
   .title h1 {
@@ -214,7 +439,8 @@ input[type=number] {
             box-shadow: 0px 9px black;
   }
 
-  .card-top, .card-bot {
+  .card-top,
+.card-bot {
     width: 110px;
     height: 55px;
   }
@@ -253,6 +479,12 @@ input[type=number] {
   }
 }
 @media only screen and (min-width: 1200px) {
+  html,
+body {
+    height: 100%;
+    overflow: hidden;
+  }
+
   .countdown-list li {
     font-size: 22px;
   }
@@ -284,5 +516,9 @@ input[type=number] {
   .modal-content {
     width: 850px;
     margin: auto;
+  }
+
+  .add-margin-left {
+    margin-left: 0px;
   }
 }

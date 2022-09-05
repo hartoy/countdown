@@ -3,6 +3,20 @@ const myHours = document.getElementById("hours")
 const myMinutes = document.getElementById("minutes")
 const mySeconds = document.getElementById("seconds")
 
+function myFunction(x) {
+  x.classList.toggle("change")
+  const mobileMenu = document.getElementById("mobile-menu")
+  mobileMenu.classList.toggle("hide")
+
+  const body = document.getElementById("body")
+  body.classList.toggle("no-overflow")
+}
+
+function fixingFooter() {
+  const footer = document.getElementById("footer")
+  footer.classList.toggle("add-margin-left")
+}
+
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 const countToDate = new Date("October 6, 2022 14:00:00")
@@ -21,30 +35,28 @@ function flipAllCards(time) {
   const hours = Math.floor(time / 3600) % 24
   const days = Math.floor(time / 3600 / 24)
 
-  setDays = days
-  setHours = hours
-  setMinutes = mins
-  setSeconds = secs
+  myDays.innerHTML = days
+  myHours.innerHTML = hours
+  myMinutes.innerHTML = mins
+  mySeconds.innerHTML = secs
 
-  myDays.innerHTML = setDays
-  myHours.innerHTML = setHours
-  myMinutes.innerHTML = setMinutes
-  mySeconds.innerHTML = setSeconds
-
-  flip(document.querySelector("[data-days]"), setDays)
-  flip(document.querySelector("[data-hours]"), setHours)
-  flip(document.querySelector("[data-minutes]"), setMinutes)
-  flip(document.querySelector("[data-seconds]"), setSeconds)
+  flip(document.querySelector("[data-days]"), days)
+  flip(document.querySelector("[data-hours]"), hours)
+  flip(document.querySelector("[data-minutes]"), mins)
+  flip(document.querySelector("[data-seconds]"), secs)
 }
 
 function flip(flipCard, newNumber) {
   const thatNumber = flipCard.querySelector(".number")
-
   const startNumber = parseInt(thatNumber.textContent)
 
-  if (newNumber !== startNumber) {
-    thatNumber.classList.add("animated")
-  } else {
+  thatNumber.classList.add("animated")
+
+  thatNumber.addEventListener("animationstart", (e) => {
+    thatNumber.textContent = newNumber
+  })
+
+  thatNumber.addEventListener("animationend", (e) => {
     thatNumber.classList.remove("animated")
-  }
+  })
 }

@@ -19,8 +19,39 @@
   <title>Frontend Mentor | Launch countdown timer</title>
 
 </head>
-<body>
-  <div class="container">
+<body id="body">
+  <div class="burger" onclick="myFunction(this)">
+  <div class="bar1"></div>
+  <div class="bar2"></div>
+  <div class="bar3"></div>
+  </div>
+   
+  <div id="mobile-menu" class="mobile-menu d-flex flex-column justify-content-around align-items-center hide dropdown_menu-6">
+    <p><a href=""><img class="social-img" src="./images/icon-facebook.svg" alt=""></a></p>
+    <p><a href=""><img class="social-img" src="./images/icon-pinterest.svg" alt=""></a></p>
+    <p><a href=""><img class="social-img" src="./images/icon-instagram.svg" alt=""></a></p>
+    <p class="text-center">Challenge by <a class="me-2" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>
+    <br> Coded by <a href="https://github.com/hartoy">Nacho Hardoy</a></p>
+  </div>
+  
+  <input type="checkbox" id="drawer-toggle" name="drawer-toggle" />
+  <label for="drawer-toggle" onclick="fixingFooter()" id="drawer-toggle-label"> </label>
+  <header>Header</header>
+  <nav id="drawer" class="d-flex">
+    <div id="lopito"
+      class="lopito d-flex flex-column justify-content-around align-items-center">
+      <p><a href=""><img class="social-img" src="./images/icon-facebook.svg" alt=""></a></p>
+      <p><a href=""><img class="social-img" src="./images/icon-pinterest.svg" alt=""></a></p>
+      <p><a href=""><img class="social-img" src="./images/icon-instagram.svg" alt=""></a></p>
+      <p class="text-center">Challenge by <a class="me-2" href="https://www.frontendmentor.io?ref=challenge"
+          target="_blank">Frontend Mentor</a>
+        <br> Coded by <a href="https://github.com/hartoy">Nacho Hardoy</a>
+      </p>
+    </div>
+  </nav>
+
+
+  <div id="page-content"class="container">
 
 
   <div class="title"><h1>We're launching soon</h1></div>
@@ -75,7 +106,7 @@
 
   
   
-  <div class="footer">
+  <div id="footer" class="footer">
     <div class="socials mb-4">
       <ul class="d-flex justify-content-center">
         <li class="me-4"><a href=""><img class="social-img" src="./images/icon-facebook.svg" alt=""></a></li>
