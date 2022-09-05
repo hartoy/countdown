@@ -15,6 +15,9 @@ function myFunction(x) {
 function fixingFooter() {
   const footer = document.getElementById("footer")
   footer.classList.toggle("add-margin-left")
+
+  const lopito = document.getElementById("lopito")
+  lopito.classList.toggle("hide")
 }
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
