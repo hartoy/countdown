@@ -97,6 +97,25 @@ a {
   text-decoration: none;
 }
 
+@keyframes animeta {
+  0% {
+    transform: scale(0.92);
+  }
+
+  10% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animacion {
+  animation: animeta 1s infinite;
+}
+
 .title {
   color: $baseWhite;
   font-family: $baseFont;
@@ -135,6 +154,7 @@ input {
   margin-bottom: 20px;
   z-index: -1;
 }
+
 .card-top {
   background-color: #34364f;
   width: 60px;
@@ -177,8 +197,10 @@ input {
   text-align: center;
   font-size: 11px;
   font-family: $baseFont;
+
   a {
     color: $baseRose;
+
     &:hover {
       color: #eb3867;
     }
@@ -206,6 +228,7 @@ input {
   text-align: center;
   width: 80%;
   margin: 0 auto;
+
   label:hover {
     color: $baseWhite;
   }
@@ -216,6 +239,7 @@ input {
   margin-top: 20px;
   padding: 0px;
   border-style: none;
+
   h5 {
     font-size: 35px;
   }
@@ -247,6 +271,7 @@ input[type="number"] {
   height: 60px;
   width: 120px;
   border-radius: 10px;
+
   &:hover {
     background-color: $baseRose;
     color: black;
@@ -299,7 +324,7 @@ input[type="number"] {
     display: block;
   }
 
-  
+
   #drawer-toggle {
     position: absolute;
     opacity: 0;
@@ -344,7 +369,7 @@ input[type="number"] {
     font-size: 30px;
     line-height: 30px;
     z-index: 0;
-    color:black;
+    color: black;
     font-style: $baseFont;
   }
 
@@ -365,8 +390,8 @@ input[type="number"] {
     font-style: $baseFont;
     font-size: 20px;
     font-weight: bold;
-    
-    a{
+
+    a {
       color: white;
     }
   }
@@ -383,28 +408,29 @@ input[type="number"] {
 
   /* checked styles (menu open state) */
 
-  #drawer-toggle:checked ~ #drawer-toggle-label {
+  #drawer-toggle:checked~#drawer-toggle-label {
     height: 100%;
     width: calc(100% - 300px);
     background: rgba(255, 255, 255, 0.8);
   }
 
-  #drawer-toggle:checked ~ #drawer-toggle-label,
-  #drawer-toggle:checked ~ header {
+  #drawer-toggle:checked~#drawer-toggle-label,
+  #drawer-toggle:checked~header {
     left: 300px;
   }
 
-  #drawer-toggle:checked ~ #drawer {
+  #drawer-toggle:checked~#drawer {
     left: 0px;
   }
 
-  #drawer-toggle:checked ~ #page-content{
+  #drawer-toggle:checked~#page-content {
     margin-left: 300px;
   }
-  
-  .add-margin-left{
+
+  .add-margin-left {
     margin-left: 330px;
   }
+
   /* Menu item styles */
 
   #drawer ul {
@@ -476,11 +502,11 @@ input[type="number"] {
 
 @media only screen and (min-width: 1200px) {
 
-html,
-    body {
-        height: 100%;
-        overflow: hidden;
-    }
+  html,
+  body {
+    height: 100%;
+    overflow: hidden;
+  }
 
   .countdown-list li {
     font-size: 22px;
@@ -504,6 +530,7 @@ html,
     top: 14px;
     font-size: 95px;
   }
+
   .socials ul {
     margin-bottom: 45px;
   }
@@ -513,7 +540,7 @@ html,
     margin: auto;
   }
 
-.add-margin-left {
+  .add-margin-left {
     margin-left: 0px;
-}
+  }
 }
